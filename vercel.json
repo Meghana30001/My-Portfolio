@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/contact.js",
+      "src": "api/contact-simple.js",
       "use": "@vercel/node"
     },
     {
@@ -21,7 +21,7 @@
   "routes": [
     {
       "src": "/api/contact",
-      "dest": "/api/contact.js"
+      "dest": "/api/contact-simple.js"
     },
     {
       "src": "/api/health",

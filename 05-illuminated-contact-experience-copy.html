@@ -229,17 +229,17 @@
                         <form class="space-y-6">
                             <div class="space-y-2 reveal delay-300 form-input-focus transition-all duration-300">
                                 <label class="text-sm font-bold uppercase tracking-widest text-white/40 ml-1">Your Name</label>
-                                <input type="text" placeholder="John Doe" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 focus:outline-none focus:border-[#FF6B35]/50 focus:ring-1 focus:ring-[#FF6B35]/20 transition-all text-white placeholder:text-white/20">
+                                <input type="text" name="name" placeholder="John Doe" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 focus:outline-none focus:border-[#FF6B35]/50 focus:ring-1 focus:ring-[#FF6B35]/20 transition-all text-white placeholder:text-white/20" required>
                             </div>
                             
                             <div class="space-y-2 reveal delay-300 form-input-focus transition-all duration-300">
                                 <label class="text-sm font-bold uppercase tracking-widest text-white/40 ml-1">Email Address</label>
-                                <input type="email" placeholder="john@example.com" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 focus:outline-none focus:border-[#FF6B35]/50 focus:ring-1 focus:ring-[#FF6B35]/20 transition-all text-white placeholder:text-white/20">
+                                <input type="email" name="email" placeholder="john@example.com" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 focus:outline-none focus:border-[#FF6B35]/50 focus:ring-1 focus:ring-[#FF6B35]/20 transition-all text-white placeholder:text-white/20" required>
                             </div>
 
                             <div class="space-y-2 reveal delay-300 form-input-focus transition-all duration-300">
                                 <label class="text-sm font-bold uppercase tracking-widest text-white/40 ml-1">Message</label>
-                                <textarea rows="6" placeholder="Tell me about your project..." class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 focus:outline-none focus:border-[#FF6B35]/50 focus:ring-1 focus:ring-[#FF6B35]/20 transition-all text-white placeholder:text-white/20 resize-none"></textarea>
+                                <textarea name="message" rows="6" placeholder="Tell me about your project..." class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 focus:outline-none focus:border-[#FF6B35]/50 focus:ring-1 focus:ring-[#FF6B35]/20 transition-all text-white placeholder:text-white/20 resize-none" required></textarea>
                             </div>
 
                             <button id="form-submit-page" class="w-full bg-gradient-to-r from-[#FF6B35] via-[#FFA500] to-[#FF8C42] text-black font-black uppercase tracking-widest py-6 rounded-2xl transition-all transform hover:scale-[1.05] active:scale-[0.98] flex items-center justify-center gap-3">
@@ -340,6 +340,53 @@
             });
 
             updateGlow();
+
+            // Contact Form Handling
+            const form = document.querySelector('form');
+            const submitBtn = document.getElementById('form-submit-page');
+            const successMessage = document.getElementById('success-message');
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = new FormData(form);
+                const name = formData.get('name') || document.querySelector('input[placeholder="John Doe"]').value;
+                const email = formData.get('email') || document.querySelector('input[placeholder="john@example.com"]').value;
+                const message = formData.get('message') || document.querySelector('textarea').value;
+
+                // Disable submit button
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<span>Sending...</span><iconify-icon icon="lucide:loader-2" class="animate-spin"></iconify-icon>';
+
+                try {
+                    const response = await fetch('/api/contact', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ name, email, message })
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        // Show success message
+                        successMessage.classList.remove('hidden');
+                        form.reset();
+                    } else {
+                        // Show error message
+                        alert(result.message || 'Failed to send message. Please try again.');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Network error. Please try again later.');
+                } finally {
+                    // Re-enable submit button
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<span>Transmit Message</span><iconify-icon icon="lucide:send"></iconify-icon>';
+                }
+            });
         });
     </script>
 </body>

@@ -1,6 +1,7 @@
-import nodemailer from 'nodemailer';
+const nodemailer = require('nodemailer');
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
+  // Set CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -11,7 +12,8 @@ export default async function handler(req, res) {
   }
   
   if (req.method !== 'POST') {
-    res.status(405).json({ error: 'Method not allowed' });
+    res.setHeader('Content-Type', 'application/json');
+    res.status(405).json({ success: false, error: 'Method not allowed' });
     return;
   }
   
@@ -26,6 +28,7 @@ export default async function handler(req, res) {
     
     // Validation
     if (!name || !email || !message) {
+      res.setHeader('Content-Type', 'application/json');
       return res.status(400).json({ 
         success: false, 
         message: 'Please fill in all fields' 
@@ -35,6 +38,7 @@ export default async function handler(req, res) {
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
+      res.setHeader('Content-Type', 'application/json');
       return res.status(400).json({ 
         success: false, 
         message: 'Please enter a valid email address' 
@@ -44,6 +48,7 @@ export default async function handler(req, res) {
     // Check environment variables
     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
       console.error('Email credentials not configured');
+      res.setHeader('Content-Type', 'application/json');
       return res.status(500).json({ 
         success: false, 
         message: 'Server configuration error - email not configured' 
@@ -79,6 +84,7 @@ export default async function handler(req, res) {
     await transporter.sendMail(mailOptions);
     console.log('Email sent successfully to:', process.env.EMAIL_USER);
     
+    res.setHeader('Content-Type', 'application/json');
     res.status(200).json({ 
       success: true, 
       message: 'Message sent successfully!' 
@@ -86,6 +92,7 @@ export default async function handler(req, res) {
     
   } catch (error) {
     console.error('Error sending email:', error);
+    res.setHeader('Content-Type', 'application/json');
     res.status(500).json({ 
       success: false, 
       message: `Failed to send message: ${error.message}` 

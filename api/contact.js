@@ -1,4 +1,5 @@
-// Simple test version without email functionality
+const nodemailer = require('nodemailer');
+
 module.exports = async function handler(req, res) {
   try {
     // Set JSON content type first
@@ -20,6 +21,10 @@ module.exports = async function handler(req, res) {
     const { name, email, message } = req.body;
     
     console.log('Received contact form submission:', { name, email, message: message?.substring(0, 50) + '...' });
+    console.log('Environment check:', {
+      EMAIL_USER: process.env.EMAIL_USER ? 'Set' : 'Not set',
+      EMAIL_PASS: process.env.EMAIL_PASS ? 'Set' : 'Not set'
+    });
     
     // Basic validation
     if (!name || !email || !message) {
@@ -38,20 +43,55 @@ module.exports = async function handler(req, res) {
       });
     }
     
-    // For now, just log the data and return success
-    console.log('Form data received successfully:', { name, email, message });
+    // Check environment variables
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+      console.error('Email credentials not configured');
+      return res.status(500).json({ 
+        success: false, 
+        message: 'Server configuration error - email not configured' 
+      });
+    }
+    
+    // Create email transporter
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+      }
+    });
+    
+    // Email options
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: process.env.EMAIL_USER,
+      subject: `New Contact Form Message from ${name}`,
+      html: `
+        <h2>New Contact Form Submission</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message}</p>
+        <hr>
+        <p><em>This message was sent from your portfolio contact form.</em></p>
+      `
+    };
+    
+    // Send email
+    await transporter.sendMail(mailOptions);
+    console.log('Email sent successfully to:', process.env.EMAIL_USER);
     
     return res.status(200).json({ 
       success: true, 
-      message: 'Message received successfully! (Email functionality disabled for testing)' 
+      message: 'Message sent successfully!' 
     });
     
   } catch (error) {
-    console.error('Server error:', error);
+    console.error('Error sending email:', error);
     res.setHeader('Content-Type', 'application/json');
     return res.status(500).json({ 
       success: false, 
-      message: `Server error: ${error.message}` 
+      message: `Failed to send message: ${error.message}` 
     });
   }
 }

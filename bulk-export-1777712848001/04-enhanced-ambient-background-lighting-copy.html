@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Featured Works | Meghana A</title>
+    <meta name="view-transition" content="same-origin">
+    <style>
+        @view-transition { navigation: auto; }
+        ::view-transition-old(root) {
+            animation: fade-out 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        ::view-transition-new(root) {
+            animation: fade-in 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        @keyframes fade-out {
+            from { opacity: 1; transform: scale(1); }
+            to { opacity: 0; transform: scale(0.98); }
+        }
+        @keyframes fade-in {
+            from { opacity: 0; transform: scale(1.02); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&display=swap');
+        @import url('https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap');
+
+        :root {
+            --bg-dark: #080505;
+            --card-bg: rgba(25, 15, 15, 0.7);
+            --primary-orange: #FF6B35;
+            --amber: #FFA500;
+            --coral: #FF8C42;
+        }
+
+        body {
+            font-family: 'Satoshi', sans-serif;
+            background-color: var(--bg-dark);
+            color: #ffffff;
+            margin: 0;
+        }
+
+        .font-display {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .bg-grid {
+            background-image: linear-gradient(rgba(255, 107, 53, 0.05) 1px, transparent 1px), 
+                              linear-gradient(90deg, rgba(255, 107, 53, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        .project-card-container {
+            perspective: 1500px;
+        }
+
+        .project-card-tilt {
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+            transform-style: preserve-3d;
+            border-radius: 1.5rem;
+        }
+
+        .project-card-tilt:hover {
+            animation: glow-pulse 1.5s infinite;
+        }
+
+        /* Inner content animations */
+        .project-card-tilt img {
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease !important;
+        }
+
+        .project-card-tilt:hover img {
+            transform: scale(1.05) !important;
+            filter: brightness(1.2) !important;
+        }
+
+        a, button {
+            transition: all 0.3s ease !important;
+        }
+
+        .project-card-tilt a:hover, 
+        .project-card-tilt button:hover {
+            color: var(--primary-orange) !important;
+            transform: translateY(-2px);
+        }
+
+        .glass-header {
+            background: rgba(8, 5, 5, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        @keyframes reveal {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes glow-pulse {
+            0% { box-shadow: 0 0 5px rgba(255, 107, 53, 0.2); }
+            50% { box-shadow: 0 0 25px rgba(255, 107, 53, 0.6); }
+            100% { box-shadow: 0 0 5px rgba(255, 107, 53, 0.2); }
+        }
+
+        .animate-reveal {
+            animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes float-slow {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(40px, -40px); }
+        }
+
+        @keyframes float-slow-delayed {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-40px, 40px); }
+        }
+
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        .animate-float-slow { animation: float-slow 20s ease-in-out infinite; }
+        .animate-float-slow-delayed { animation: float-slow-delayed 25s ease-in-out infinite; }
+        .animate-pulse-soft { animation: pulse-soft 12s ease-in-out infinite; }
+    </style>
+  <style>sd-component { display: block; }</style>
+  <script src="https://cdn.jsdelivr.net/npm/petite-vue@0.4.1/dist/petite-vue.iife.js" defer init></script>
+</head>
+<body>
+    <div class="min-h-screen relative flex flex-col items-center overflow-x-hidden">
+        <!-- Persistent Background Elements -->
+        <div class="fixed inset-0 bg-grid pointer-events-none opacity-40"></div>
+        <div class="fixed top-[-15%] left-[-10%] w-[600px] h-[600px] bg-[#FF6B35]/15 blur-[120px] rounded-full"></div>
+        <div class="fixed bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-[#FFA500]/10 blur-[150px] rounded-full"></div>
+
+        <!-- Enhanced Ambient Background Lighting -->
+        <div class="fixed top-[-10%] left-[-5%] w-[700px] h-[700px] bg-[#FF6B35]/20 blur-[150px] rounded-full pointer-events-none animate-float-slow z-0"></div>
+        <div class="fixed top-[-15%] right-[-10%] w-[800px] h-[800px] bg-[#FFA500]/18 blur-[160px] rounded-full pointer-events-none animate-float-slow-delayed z-0"></div>
+        <div class="fixed bottom-[-10%] left-[-10%] w-[750px] h-[750px] bg-[#FF8C42]/15 blur-[150px] rounded-full pointer-events-none animate-float-slow z-0"></div>
+        <div class="fixed bottom-[-5%] right-[-5%] w-[700px] h-[700px] bg-[#FF6B35]/17 blur-[140px] rounded-full pointer-events-none animate-float-slow-delayed z-0"></div>
+        <div class="fixed top-[-5%] left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#FFA500]/12 blur-[150px] rounded-full pointer-events-none animate-pulse-soft z-0"></div>
+        <div id="cursor-glow" class="fixed pointer-events-none rounded-full z-0 opacity-0 transition-opacity duration-1000" style="width: 800px; height: 800px; background: radial-gradient(circle, rgba(255, 107, 53, 0.12) 0%, transparent 70%); filter: blur(100px); transform: translate(-50%, -50%);"></div>
+
+        <!-- Navigation Bar Component -->
+<nav class="fixed top-0 w-full z-50 px-6 py-4 flex justify-center">
+  <div class="max-w-7xl w-full flex items-center justify-between px-8 py-3 rounded-full bg-[#190f0f]/70 backdrop-blur-xl border border-white/10">
+    <a href="01-ultra-illuminated-orange-ambient-portfolio.html" class="font-black text-2xl tracking-tighter text-white" style="font-family: 'Poppins', sans-serif;">
+      MEGHANA A<span class="text-[#FF6B35]">.</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium uppercase tracking-widest">
+      <a href="02-enhanced-ambient-background-glow-copy.html" class="text-white/70 hover:text-[#FF6B35] transition-colors">About</a>
+      <a href="03-ultra-illuminated-skills-arsenal.html" class="text-white/70 hover:text-[#FF6B35] transition-colors">Skills</a>
+      <a href="04-enhanced-ambient-background-lighting-copy.html" class="text-[#FF6B35] hover:text-[#FF6B35] transition-colors">Projects</a>
+      <a href="05-illuminated-contact-experience-copy.html" class="text-white/70 hover:text-[#FF6B35] transition-colors">Contact</a>
+    </div>
+    <a href="05-illuminated-contact-experience-copy.html" class="bg-white text-black px-6 py-2 rounded-full font-bold text-sm hover:bg-[#FF6B35] hover:text-white transition-all transform hover:scale-105">
+      Hire Me
+    </a>
+  </div>
+</nav>
+
+        <!-- Main Content -->
+        <main class="w-full max-w-7xl px-6 pt-40 pb-20 relative z-10">
+            
+            <!-- Page Header -->
+            <header class="mb-20 space-y-4 animate-reveal">
+                <div class="flex items-center gap-4">
+                    <span class="h-px w-12 bg-[#FF6B35]"></span>
+                    <span class="text-[#FF6B35] font-bold uppercase tracking-[0.4em] text-sm">Portfolio Showcase</span>
+                </div>
+                <h1 class="font-display font-black text-6xl md:text-8xl tracking-tighter uppercase">
+                    Featured <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B35] to-[#FFA500]">Works</span>
+                </h1>
+                <p class="text-xl text-white/50 max-w-2xl leading-relaxed">
+                    A selection of my recent technical explorations, ranging from mobile ecosystems and AI models to creative web interfaces.
+                </p>
+            </header>
+
+            <!-- Projects Grid -->
+            <div class="grid lg:grid-cols-2 gap-12">
+                
+                <!-- Project 1: Scanner App -->
+                <div class="project-card-container animate-reveal" style="animation-delay: 0.1s">
+                    <div class="project-card-tilt">
+<div class="group relative overflow-hidden rounded-[2.5rem] bg-[#190F0F]/70 backdrop-blur-[12px] border border-white/10 hover:border-[#FF6B35]/40 transition-all duration-500">
+    <div class="aspect-video w-full overflow-hidden">
+        <img src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/uploads/c3aa1960-460d-4d77-8a54-92235d14712b/1777624968825-c95e44eb/WhatsApp_Image_2026-05-01_at_2.10.15_PM.jpeg" alt="Mobile Scanner App" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+    </div>
+    <div class="p-8 space-y-4">
+        <div class="flex justify-between items-start">
+            <div>
+                <h3 class="font-['Poppins',_sans-serif] font-bold text-3xl">Mobile Scanner App</h3>
+                <p class="text-white/60 mt-2">Event Management App</p>
+            </div>
+            <div class="flex gap-2">
+                <a href="https://github.com/Meghana30001" target="_blank" rel="noopener noreferrer" class="p-3 bg-[#190F0F]/70 backdrop-blur-[12px] border border-white/10 rounded-full hover:bg-white hover:text-black transition-all" aria-label="GitHub">
+                    <iconify-icon icon="lucide:github" class="text-xl"></iconify-icon>
+                </a>
+                <a href="https://github.com/Meghana30001" target="_blank" rel="noopener noreferrer" class="p-3 bg-[#190F0F]/70 backdrop-blur-[12px] border border-white/10 rounded-full hover:bg-[#FF6B35] hover:text-black transition-all" aria-label="Live demo">
+                    <iconify-icon icon="lucide:external-link" class="text-xl"></iconify-icon>
+                </a>
+            </div>
+        </div>
+        <p class="text-white/70 leading-relaxed">
+            A comprehensive mobile application designed to scan and verify attendees entering the college premises. Real-time QR code scanning, attendance tracking, and instant notifications for event organizers to manage entry checkpoints efficiently.
+        </p>
+        <div class="flex flex-wrap gap-2 pt-2">
+            <span class="px-3 py-1 bg-[#FF6B35]/10 text-[#FF6B35] text-xs font-bold rounded-full border border-[#FF6B35]/20">Flutter</span>
+            <span class="px-3 py-1 bg-[#FF6B35]/10 text-[#FF6B35] text-xs font-bold rounded-full border border-[#FF6B35]/20">Firebase</span>
+            <span class="px-3 py-1 bg-[#FF6B35]/10 text-[#FF6B35] text-xs font-bold rounded-full border border-[#FF6B35]/20">QR Scanner</span>
+        </div>
+    </div>
+</div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Women's Health Portal -->
+                <div class="project-card-container animate-reveal" style="animation-delay: 0.2s">
+                    <div class="project-card-tilt">
+<div class="group relative overflow-hidden rounded-[2.5rem] bg-[#190F0F]/70 backdrop-blur-[12px] border border-white/10 hover:border-[#FF6B35]/40 transition-all duration-500">
+    <div class="aspect-video w-full overflow-hidden">
+        <img src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/uploads/c3aa1960-460d-4d77-8a54-92235d14712b/1777625205714-d43b3d45/image.png" alt="Women's Health Portal" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+    </div>
+    <div class="p-8 space-y-4">
+        <div class="flex justify-between items-start">
+            <div>
+                <h3 class="font-['Poppins',_sans-serif] font-bold text-3xl">Women's Health Portal</h3>
+                <p class="text-white/60 mt-2">Healthcare Management System</p>
+            </div>
+            <div class="flex gap-2">
+                <a href="https://github.com/Meghana30001" target="_blank" rel="noopener noreferrer" class="p-3 bg-[#190F0F]/70 backdrop-blur-[12px] border border-white/10 rounded-full hover:bg-white hover:text-black transition-all" aria-label="GitHub">
+                    <iconify-icon icon="lucide:github" class="text-xl"></iconify-icon>
+                </a>
+                <a href="https://github.com/Meghana30001" target="_blank" rel="noopener noreferrer" class="p-3 bg-[#190F0F]/70 backdrop-blur-[12px] border border-white/10 rounded-full hover:bg-[#FF6B35] hover:text-black transition-all" aria-label="Live demo">
+                    <iconify-icon icon="lucide:external-link" class="text-xl"></iconify-icon>
+                </a>
+            </div>
+        </div>
+        <p class="text-white/70 leading-relaxed">
+            A comprehensive women's health monitoring platform designed to track menstrual cycles, symptoms, mood, health metrics, and provide personalized wellness insights. Features real-time health monitoring, cycle predictions, symptom tracking, mood analysis, and professional healthcare recommendations for women's holistic wellness.
+        </p>
+        <div class="flex flex-wrap gap-2 pt-2">
+            <span class="px-3 py-1 bg-[#FF6B35]/10 text-[#FF6B35] text-xs font-bold rounded-full border border-[#FF6B35]/20">React</span>
+            <span class="px-3 py-1 bg-[#FF6B35]/10 text-[#FF6B35] text-xs font-bold rounded-full border border-[#FF6B35]/20">HealthTech</span>
+            <span class="px-3 py-1 bg-[#FF6B35]/10 text-[#FF6B35] text-xs font-bold rounded-full border border-[#FF6B35]/20">Dashboard</span>
+        </div>
+    </div>
+</div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Medistock Application -->
+                <div class="project-card-container animate-reveal" style="animation-delay: 0.3s">
+                    <div class="project-card-tilt">
+<div class="group relative overflow-hidden rounded-[2.5rem] bg-[#190F0F]/70 backdrop-blur-[12px] border border-white/10 hover:border-[#FF6B35]/40 transition-all duration-500">
+    <div class="aspect-video w-full overflow-hidden">
+        <img src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/uploads/c3aa1960-460d-4d77-8a54-92235d14712b/1777625885327-cd6216a0/image.png" alt="Medistock Application" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+    </div>
+    <div class="p-8 space-y-4">
+        <div class="flex justify-between items-start">
+            <div>
+                <h3 class="font-['Poppins',_sans-serif] font-bold text-3xl">Medistock Application</h3>
+                <p class="text-white/60 mt-2">Healthcare Platform</p>
+            </div>
+            <div class="flex gap-2">
+                <a href="https://github.com/Meghana30001" target="_blank" rel="noopener noreferrer" class="p-3 bg-[#190F0F]/70 backdrop-blur-[12px] border border-white/10 rounded-full hover:bg-white hover:text-black transition-all" aria-label="GitHub">
+                    <iconify-icon icon="lucide:github" class="text-xl"></iconify-icon>
+                </a>
+                <a href="https://github.com/Meghana30001" target="_blank" rel="noopener noreferrer" class="p-3 bg-[#190F0F]/70 backdrop-blur-[12px] border border-white/10 rounded-full hover:bg-[#FF6B35] hover:text-black transition-all" aria-label="Live demo">
+                    <iconify-icon icon="lucide:external-link" class="text-xl"></iconify-icon>
+                </a>
+            </div>
+        </div>
+        <p class="text-white/70 leading-relaxed">
+            A comprehensive platform that seamlessly connects users and medical shops for efficient medicine procurement. Features real-time inventory management, secure transactions, and HIPAA-compliant data handling. Built with Figma and Supabase for robust backend infrastructure.
+        </p>
+        <div class="flex flex-wrap gap-2 pt-2">
+            <span class="px-3 py-1 bg-[#FF6B35]/10 text-[#FF6B35] text-xs font-bold rounded-full border border-[#FF6B35]/20">Figma</span>
+            <span class="px-3 py-1 bg-[#FF6B35]/10 text-[#FF6B35] text-xs font-bold rounded-full border border-[#FF6B35]/20">Supabase</span>
+        </div>
+    </div>
+</div>
+                    </div>
+                </div>
+
+                <!-- Project 4: ImpactLink Platform -->
+                <div class="project-card-container animate-reveal" style="animation-delay: 0.4s">
+                    <div class="project-card-tilt">
+<div class="group relative overflow-hidden rounded-[2.5rem] bg-[#190F0F]/70 backdrop-blur-[12px] border border-white/10 hover:border-[#FF6B35]/40 transition-all duration-500">
+    <div class="aspect-video w-full overflow-hidden">
+        <img src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/uploads/c3aa1960-460d-4d77-8a54-92235d14712b/1777626178292-7d4b8c29/image.png" alt="ImpactLink Platform" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+    </div>
+    <div class="p-8 space-y-4">
+        <div class="flex justify-between items-start">
+            <div>
+                <h3 class="font-['Poppins',_sans-serif] font-bold text-3xl">ImpactLink Platform</h3>
+                <p class="text-white/60 mt-2">Community Impact</p>
+            </div>
+            <div class="flex gap-2">
+                <a href="https://github.com/Meghana30001" target="_blank" rel="noopener noreferrer" class="p-3 bg-[#190F0F]/70 backdrop-blur-[12px] border border-white/10 rounded-full hover:bg-white hover:text-black transition-all" aria-label="GitHub">
+                    <iconify-icon icon="lucide:github" class="text-xl"></iconify-icon>
+                </a>
+                <a href="https://github.com/Meghana30001" target="_blank" rel="noopener noreferrer" class="p-3 bg-[#190F0F]/70 backdrop-blur-[12px] border border-white/10 rounded-full hover:bg-[#FF6B35] hover:text-black transition-all" aria-label="Live demo">
+                    <iconify-icon icon="lucide:external-link" class="text-xl"></iconify-icon>
+                </a>
+            </div>
+        </div>
+        <p class="text-white/70 leading-relaxed">
+            A smart resource allocation platform connecting volunteers with urgent community needs. Features AI-powered volunteer matching, real-time community insights, and intelligent coordination to maximize social impact. Built with Vercel and Neon for high-performance infrastructure.
+        </p>
+        <div class="flex flex-wrap gap-2 pt-2">
+            <span class="px-3 py-1 bg-[#FF6B35]/10 text-[#FF6B35] text-xs font-bold rounded-full border border-[#FF6B35]/20">Vercel</span>
+            <span class="px-3 py-1 bg-[#FF6B35]/10 text-[#FF6B35] text-xs font-bold rounded-full border border-[#FF6B35]/20">Neon</span>
+        </div>
+    </div>
+</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Call to action -->
+            <div class="mt-32 p-16 rounded-[3rem] bg-gradient-to-br from-[#FF6B35]/10 to-transparent border border-[#FF6B35]/20 flex flex-col md:flex-row justify-between items-center gap-8 animate-reveal">
+                <div class="space-y-4 text-center md:text-left">
+                    <h3 class="font-display font-black text-4xl">Have a vision in mind?</h3>
+                    <p class="text-white/60 text-lg">Let’s collaborate to build something extraordinary together.</p>
+                </div>
+                <a href="05-illuminated-contact-experience-copy.html" id="cta-project-bottom" class="px-12 py-5 bg-[#FF6B35] text-black font-black uppercase tracking-widest rounded-2xl hover:bg-[#FFA500] hover:scale-105 transition-all shadow-xl shadow-[#FF6B35]/20">
+                    Start a Project
+                </a>
+            </div>
+
+        </main>
+
+        <!-- Footer Section Component -->
+<footer id="contact" class="w-full max-w-7xl px-6 py-32 space-y-12 border-t border-white/10">
+    <div class="grid lg:grid-cols-2 gap-20">
+        <div class="space-y-8">
+            <div class="space-y-4">
+                <h2 class="font-display font-black text-6xl tracking-tight">Let's create <span class="text-[#FF6B35]">impact</span>.</h2>
+                <p class="text-xl text-white/60">
+                    I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+                </p>
+            </div>
+            
+            <div class="space-y-6">
+                <a href="mailto:meghanaamilineni30@gmail.com" id="contact-email" class="flex items-center gap-4 group">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center group-hover:bg-[#FF6B35] group-hover:text-black transition-all" style="background: rgba(25, 15, 15, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <iconify-icon icon="lucide:mail"></iconify-icon>
+                    </div>
+                    <span class="text-lg font-medium">meghanaamilineni30@gmail.com</span>
+                </a>
+                <a href="https://www.linkedin.com/in/meghana-a-799ab332a/" id="contact-linkedin" class="flex items-center gap-4 group">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all" style="background: rgba(25, 15, 15, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <iconify-icon icon="lucide:linkedin"></iconify-icon>
+                    </div>
+                    <span class="text-lg font-medium">linkedin.com/in/meghana-a-799ab332a</span>
+                </a>
+                <a href="https://github.com/Meghana30001" id="contact-github" class="flex items-center gap-4 group">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all" style="background: rgba(25, 15, 15, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <iconify-icon icon="lucide:github"></iconify-icon>
+                    </div>
+                    <span class="text-lg font-medium">github.com/Meghana30001</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="p-10 rounded-[3rem] space-y-6" style="background: rgba(25, 15, 15, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1);">
+            <h3 class="font-display font-bold text-2xl">Send a Message</h3>
+            <p class="text-white/60">Use the contact page for the full form and details.</p>
+            <a href="05-illuminated-contact-experience-copy.html" id="form-submit" class="inline-flex w-full justify-center bg-[#FF6B35] text-black font-bold py-4 rounded-2xl hover:bg-[#FF8C42] transition-all transform active:scale-95 shadow-lg shadow-[#FF6B35]/20">
+                Open contact page
+            </a>
+        </div>
+    </div>
+
+    <div class="pt-20 flex flex-col md:flex-row justify-between items-center gap-6 text-white/40 text-sm">
+        <p>© 2024 Meghana A. Engineering Student Portfolio.</p>
+        <p>Designed for Recruiters with ❤️ and Code.</p>
+    </div>
+</footer>
+    </div>
+
+    <script>
+        // Interactive 3D tilt effect for cards
+        // Cursor Following Glow Effect
+        const glow = document.getElementById('cursor-glow');
+        let mouseX = 0;
+        let mouseY = 0;
+        let currentX = 0;
+        let currentY = 0;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            if (glow.style.opacity === "0") glow.style.opacity = "1";
+        });
+
+        function updateGlow() {
+            const dx = mouseX - currentX;
+            const dy = mouseY - currentY;
+            
+            // Smooth interpolation (lerp)
+            currentX += dx * 0.08;
+            currentY += dy * 0.08;
+            
+            glow.style.left = `${currentX}px`;
+            glow.style.top = `${currentY}px`;
+            
+            requestAnimationFrame(updateGlow);
+        }
+        updateGlow();
+
+        // Interactive 3D tilt effect for cards
+        const cards = document.querySelectorAll('.project-card-tilt');
+        
+        cards.forEach(card => {
+            const container = card.closest('.project-card-container');
+            
+            container.addEventListener('mousemove', (e) => {
+                const rect = container.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const maxTilt = 5;
+                const rotateX = ((centerY - y) / centerY) * maxTilt;
+                const rotateY = ((x - centerX) / centerX) * maxTilt;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+
+            container.addEventListener('mouseleave', () => {
+                card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+            });
+        });
+    </script>
+</body>
+</html>

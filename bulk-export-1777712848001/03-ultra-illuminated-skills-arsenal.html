@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultra-Illuminated Skills Arsenal | Meghana A</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <style>
+        @view-transition { navigation: auto; }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 15px -5px rgba(255, 107, 53, 0.2); }
+            50% { box-shadow: 0 0 25px 0px rgba(255, 107, 53, 0.4); }
+        }
+
+        .animate-reveal {
+            opacity: 0;
+        }
+
+        .animate-reveal.active {
+            animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        .skill-item-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .skill-item-hover:hover {
+            transform: scale(1.08);
+            background: rgba(255, 107, 53, 0.15) !important;
+            border-color: rgba(255, 107, 53, 0.3) !important;
+            box-shadow: 0 8px 20px -8px rgba(255, 107, 53, 0.4);
+        }
+
+        .skill-item-hover:hover span {
+            color: #FF6B35 !important;
+        }
+
+        .pulse-icon {
+            animation: glowPulse 3s infinite ease-in-out;
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&display=swap');
+        @import url('https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap');
+
+        :root {
+            --bg-dark: #080505;
+            --card-bg: rgba(25, 15, 15, 0.7);
+            --primary-orange: #FF6B35;
+            --amber: #FFA500;
+            --coral: #FF8C42;
+        }
+
+        body {
+            font-family: 'Satoshi', sans-serif;
+            background-color: var(--bg-dark);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .font-display {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .glass {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .bg-grid {
+            background-image: linear-gradient(rgba(255, 107, 53, 0.05) 1px, transparent 1px), 
+                              linear-gradient(90deg, rgba(255, 107, 53, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        .skill-card-hover {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .skill-card-hover:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(255, 107, 53, 0.4);
+            box-shadow: 0 20px 40px -15px rgba(255, 107, 53, 0.2);
+        }
+
+        .text-gradient-orange {
+            background: linear-gradient(to right, var(--primary-orange), var(--amber));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        #cursor-glow {
+            position: fixed;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.3) 0%, transparent 70%);
+            filter: blur(100px);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1;
+            mix-blend-mode: screen;
+            transition: opacity 0.8s ease;
+            will-change: transform;
+        }
+
+        /* Ambient Background Orb Animations */
+        @keyframes orbFloat1 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(40px, -30px) scale(1.05); }
+        }
+        @keyframes orbFloat2 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-30px, 50px) scale(1.1); }
+        }
+        @keyframes orbFloat3 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(50px, 40px) scale(1.08); }
+        }
+        @keyframes orbFloat4 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-40px, -40px) scale(1.06); }
+        }
+
+        .animate-orb-1 { animation: orbFloat1 20s infinite ease-in-out; }
+        .animate-orb-2 { animation: orbFloat2 25s infinite ease-in-out; }
+        .animate-orb-3 { animation: orbFloat3 22s infinite ease-in-out; }
+        .animate-orb-4 { animation: orbFloat4 18s infinite ease-in-out; }
+    </style>
+  <style>sd-component { display: block; }</style>
+  <script src="https://cdn.jsdelivr.net/npm/petite-vue@0.4.1/dist/petite-vue.iife.js" defer init></script>
+</head>
+<body>
+    <div class="min-h-screen relative flex flex-col items-center">
+        <!-- Persistent Background Elements -->
+        <div id="cursor-glow"></div>
+        <div class="fixed inset-0 bg-grid pointer-events-none opacity-50"></div>
+        <!-- Enhanced Ambient Glows -->
+        <div class="fixed top-[-15%] left-[-15%] w-[700px] h-[700px] bg-[#FF6B35]/18 blur-[150px] rounded-full pointer-events-none z-0 animate-orb-1"></div>
+        <div class="fixed top-[-10%] right-[-15%] w-[600px] h-[600px] bg-[#FF8C42]/15 blur-[130px] rounded-full pointer-events-none z-0 animate-orb-2"></div>
+        <div class="fixed bottom-[-10%] left-[-10%] w-[650px] h-[650px] bg-[#FFA500]/13 blur-[140px] rounded-full pointer-events-none z-0 animate-orb-3"></div>
+        <div class="fixed bottom-[-15%] right-[-10%] w-[750px] h-[750px] bg-[#FF6B35]/17 blur-[150px] rounded-full pointer-events-none z-0 animate-orb-4"></div>
+
+        <!-- Additional Ultra-Illumination Glows -->
+        <div class="fixed top-[-5%] left-[15%] w-[900px] h-[900px] bg-[#FF6B35]/22 blur-[180px] rounded-full animate-orb-1 pointer-events-none z-0"></div>
+        <div class="fixed top-[-20%] left-1/2 -translate-x-1/2 w-[850px] h-[850px] bg-[#FFA500]/20 blur-[170px] rounded-full animate-orb-2 pointer-events-none z-0" style="animation-delay: -5s;"></div>
+        <div class="fixed top-[-10%] right-[15%] w-[950px] h-[950px] bg-[#FF8C42]/18 blur-[160px] rounded-full animate-orb-3 pointer-events-none z-0" style="animation-delay: -10s;"></div>
+        <div class="fixed top-[40%] left-[-10%] w-[800px] h-[800px] bg-[#FF6B35]/17 blur-[150px] rounded-full animate-orb-4 pointer-events-none z-0"></div>
+        <div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-[#FFA500]/15 blur-[180px] rounded-full animate-orb-1 pointer-events-none z-0" style="animation-delay: -15s;"></div>
+        <div class="fixed top-[45%] right-[-15%] w-[850px] h-[850px] bg-[#FF8C42]/19 blur-[160px] rounded-full animate-orb-2 pointer-events-none z-0" style="animation-delay: -3s;"></div>
+        <div class="fixed bottom-[5%] left-[20%] w-[900px] h-[900px] bg-[#FF6B35]/21 blur-[170px] rounded-full animate-orb-3 pointer-events-none z-0"></div>
+        <div class="fixed bottom-[-10%] right-[10%] w-[950px] h-[950px] bg-[#FF8C42]/20 blur-[180px] rounded-full animate-orb-4 pointer-events-none z-0"></div>
+        
+        <!-- Bright Accent Orbs -->
+        <div class="fixed top-[20%] left-[5%] w-[300px] h-[300px] bg-[#FF6B35]/25 blur-[100px] rounded-full animate-orb-1 pointer-events-none z-0"></div>
+        <div class="fixed bottom-[30%] right-[15%] w-[400px] h-[400px] bg-[#FFA500]/25 blur-[120px] rounded-full animate-orb-2 pointer-events-none z-0"></div>
+
+        <!-- Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 px-6 py-4 flex justify-center">
+  <div class="max-w-7xl w-full flex items-center justify-between px-8 py-3 rounded-full bg-[#190f0f]/70 backdrop-blur-xl border border-white/10">
+    <a href="01-ultra-illuminated-orange-ambient-portfolio.html" class="font-black text-2xl tracking-tighter text-white" style="font-family: 'Poppins', sans-serif;">
+      MEGHANA A<span class="text-[#FF6B35]">.</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium uppercase tracking-widest">
+      <a href="02-enhanced-ambient-background-glow-copy.html" class="text-white/70 hover:text-[#FF6B35] transition-colors">About</a>
+      <a href="03-ultra-illuminated-skills-arsenal.html" class="text-[#FF6B35] hover:text-[#FF6B35] transition-colors">Skills</a>
+      <a href="04-enhanced-ambient-background-lighting-copy.html" class="text-white/70 hover:text-[#FF6B35] transition-colors">Projects</a>
+      <a href="05-illuminated-contact-experience-copy.html" class="text-white/70 hover:text-[#FF6B35] transition-colors">Contact</a>
+    </div>
+    <a href="05-illuminated-contact-experience-copy.html" class="bg-white text-black px-6 py-2 rounded-full font-bold text-sm hover:bg-[#FF6B35] hover:text-white transition-all transform hover:scale-105">
+      Hire Me
+    </a>
+  </div>
+</nav>
+
+        <!-- Main Content -->
+        <main class="w-full max-w-7xl px-6 pt-32 pb-20 relative z-10 flex flex-col items-center">
+            <!-- Section Header -->
+            <div class="text-center space-y-6 mb-20">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#FF6B35]/30 bg-[#FF6B35]/5 text-[#FF6B35] text-xs font-bold uppercase tracking-widest">
+                    <iconify-icon icon="lucide:zap"></iconify-icon>
+                    Expertise & Passion
+                </div>
+                <h1 class="font-display font-black text-6xl md:text-8xl tracking-tight leading-tight">
+                    Skill <span class="text-gradient-orange">Arsenal</span>
+                </h1>
+                <p class="text-white/50 text-lg md:text-xl max-w-2xl mx-auto uppercase tracking-[0.2em] font-medium">
+                    Crafting digital solutions with a modern tech stack and creative vision.
+                </p>
+            </div>
+
+            <!-- Skills Grid -->
+            <div class="grid md:grid-cols-2 gap-8 w-full">
+                
+                <!-- Programming -->
+                <div class="glass p-10 rounded-[2.5rem] skill-card-hover group">
+                    <div class="flex items-center gap-6 mb-8">
+                        <div class="w-16 h-16 rounded-2xl bg-[#FF6B35]/10 flex items-center justify-center text-[#FF6B35] pulse-icon group-hover:bg-[#FF6B35] group-hover:text-black transition-colors duration-300">
+                            <iconify-icon icon="lucide:code-2" class="text-3xl"></iconify-icon>
+                        </div>
+                        <h2 class="font-display font-bold text-3xl">Programming</h2>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center gap-3 p-4 glass rounded-2xl border-white/5 skill-item-hover group-hover:bg-white/5 transition-all">
+                            <iconify-icon icon="logos:c-plusplus" class="text-xl"></iconify-icon>
+                            <span class="font-medium text-white/80">C/C++</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-4 glass rounded-2xl border-white/5 skill-item-hover group-hover:bg-white/5 transition-all">
+                            <iconify-icon icon="logos:java" class="text-xl"></iconify-icon>
+                            <span class="font-medium text-white/80">Java</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-4 glass rounded-2xl border-white/5 skill-item-hover group-hover:bg-white/5 transition-all">
+                            <iconify-icon icon="logos:python" class="text-xl"></iconify-icon>
+                            <span class="font-medium text-white/80">Python</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-4 glass rounded-2xl border-white/5 skill-item-hover group-hover:bg-white/5 transition-all">
+                            <iconify-icon icon="logos:mysql" class="text-xl"></iconify-icon>
+                            <span class="font-medium text-white/80">SQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Design -->
+                <div class="glass p-10 rounded-[2.5rem] skill-card-hover group">
+                    <div class="flex items-center gap-6 mb-8">
+                        <div class="w-16 h-16 rounded-2xl bg-[#FFA500]/10 flex items-center justify-center text-[#FFA500] pulse-icon group-hover:bg-[#FFA500] group-hover:text-black transition-colors duration-300">
+                            <iconify-icon icon="lucide:palette" class="text-3xl"></iconify-icon>
+                        </div>
+                        <h2 class="font-display font-bold text-3xl">Design</h2>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center gap-3 p-4 glass rounded-2xl border-white/5 skill-item-hover group-hover:bg-white/5 transition-all">
+                            <iconify-icon icon="logos:figma" class="text-xl"></iconify-icon>
+                            <span class="font-medium text-white/80">Figma</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-4 glass rounded-2xl border-white/5 skill-item-hover group-hover:bg-white/5 transition-all">
+                            <iconify-icon icon="lucide:layout" class="text-xl text-[#FFA500]"></iconify-icon>
+                            <span class="font-medium text-white/80">UI/UX Design</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-4 glass rounded-2xl border-white/5 skill-item-hover group-hover:bg-white/5 transition-all">
+                            <iconify-icon icon="logos:google-icon" class="text-xl"></iconify-icon>
+                            <span class="font-medium text-white/80">Antigravity</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-4 glass rounded-2xl border-white/5 skill-item-hover group-hover:bg-white/5 transition-all">
+                            <iconify-icon icon="lucide:wand-2" class="text-xl text-white/60"></iconify-icon>
+                            <span class="font-medium text-white/80">Prototyping</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Development -->
+                <div class="glass p-10 rounded-[2.5rem] skill-card-hover group">
+                    <div class="flex items-center gap-6 mb-8">
+                        <div class="w-16 h-16 rounded-2xl bg-[#FF8C42]/10 flex items-center justify-center text-[#FF8C42] pulse-icon group-hover:bg-[#FF8C42] group-hover:text-black transition-colors duration-300">
+                            <iconify-icon icon="lucide:smartphone" class="text-3xl"></iconify-icon>
+                        </div>
+                        <h2 class="font-display font-bold text-3xl">Development</h2>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center gap-3 p-4 glass rounded-2xl border-white/5 skill-item-hover group-hover:bg-white/5 transition-all">
+                            <iconify-icon icon="logos:flutter" class="text-xl"></iconify-icon>
+                            <span class="font-medium text-white/80">Flutter</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-4 glass rounded-2xl border-white/5 skill-item-hover group-hover:bg-white/5 transition-all">
+                            <iconify-icon icon="logos:android-icon" class="text-xl"></iconify-icon>
+                            <span class="font-medium text-white/80">Android</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-4 glass rounded-2xl border-white/5 skill-item-hover group-hover:bg-white/5 transition-all">
+                            <iconify-icon icon="logos:supabase-icon" class="text-xl"></iconify-icon>
+                            <span class="font-medium text-white/80">Supabase</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-4 glass rounded-2xl border-white/5 skill-item-hover group-hover:bg-white/5 transition-all">
+                            <iconify-icon icon="lucide:globe" class="text-xl text-blue-400"></iconify-icon>
+                            <span class="font-medium text-white/80">Web</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interests -->
+                <div class="glass p-10 rounded-[2.5rem] skill-card-hover group">
+                    <div class="flex items-center gap-6 mb-8">
+                        <div class="w-16 h-16 rounded-2xl bg-[#FF6B35]/10 flex items-center justify-center text-[#FF6B35] pulse-icon group-hover:bg-[#FF6B35] group-hover:text-black transition-colors duration-300">
+                            <iconify-icon icon="lucide:rocket" class="text-3xl"></iconify-icon>
+                        </div>
+                        <h2 class="font-display font-bold text-3xl">Interests</h2>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center gap-3 p-4 glass rounded-2xl border-white/5 skill-item-hover group-hover:bg-white/5 transition-all">
+                            <iconify-icon icon="lucide:trophy" class="text-xl text-yellow-400"></iconify-icon>
+                            <span class="font-medium text-white/80">Hackathons</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-4 glass rounded-2xl border-white/5 skill-item-hover group-hover:bg-white/5 transition-all">
+                            <iconify-icon icon="lucide:search" class="text-xl text-[#FF6B35]"></iconify-icon>
+                            <span class="font-medium text-white/80">Tech Exploration</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-4 glass rounded-2xl border-white/5 skill-item-hover group-hover:bg-white/5 transition-all">
+                            <iconify-icon icon="lucide:cpu" class="text-xl text-purple-400"></iconify-icon>
+                            <span class="font-medium text-white/80">AI/ML</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-4 glass rounded-2xl border-white/5 skill-item-hover group-hover:bg-white/5 transition-all">
+                            <iconify-icon icon="lucide:github" class="text-xl text-white"></iconify-icon>
+                            <span class="font-medium text-white/80">Open Source</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <!-- Footer Section -->
+<footer id="contact" class="w-full max-w-7xl px-6 py-32 space-y-12 border-t border-white/10">
+    <div class="grid lg:grid-cols-2 gap-20">
+        <div class="space-y-8">
+            <div class="space-y-4">
+                <h2 class="font-display font-black text-6xl tracking-tight">Let's create <span class="text-[#FF6B35]">impact</span>.</h2>
+                <p class="text-xl text-white/60">
+                    I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+                </p>
+            </div>
+            
+            <div class="space-y-6">
+                <a href="mailto:meghanaamilineni30@gmail.com" id="contact-email" class="flex items-center gap-4 group">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center group-hover:bg-[#FF6B35] group-hover:text-black transition-all" style="background: rgba(25, 15, 15, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <iconify-icon icon="lucide:mail"></iconify-icon>
+                    </div>
+                    <span class="text-lg font-medium">meghanaamilineni30@gmail.com</span>
+                </a>
+                <a href="https://www.linkedin.com/in/meghana-a-799ab332a/" id="contact-linkedin" class="flex items-center gap-4 group">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all" style="background: rgba(25, 15, 15, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <iconify-icon icon="lucide:linkedin"></iconify-icon>
+                    </div>
+                    <span class="text-lg font-medium">linkedin.com/in/meghana-a-799ab332a</span>
+                </a>
+                <a href="https://github.com/Meghana30001" id="contact-github" class="flex items-center gap-4 group">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all" style="background: rgba(25, 15, 15, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <iconify-icon icon="lucide:github"></iconify-icon>
+                    </div>
+                    <span class="text-lg font-medium">github.com/Meghana30001</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="p-10 rounded-[3rem] space-y-6" style="background: rgba(25, 15, 15, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1);">
+            <h3 class="font-display font-bold text-2xl">Send a Message</h3>
+            <p class="text-white/60">Use the contact page for the full form and details.</p>
+            <a href="05-illuminated-contact-experience-copy.html" id="form-submit" class="inline-flex w-full justify-center bg-[#FF6B35] text-black font-bold py-4 rounded-2xl hover:bg-[#FF8C42] transition-all transform active:scale-95 shadow-lg shadow-[#FF6B35]/20">
+                Open contact page
+            </a>
+        </div>
+    </div>
+
+    <div class="pt-20 flex flex-col md:flex-row justify-between items-center gap-6 text-white/40 text-sm">
+        <p>© 2024 Meghana A. Engineering Student Portfolio.</p>
+        <p>Designed for Recruiters with ❤️ and Code.</p>
+    </div>
+</footer>
+    </div>
+
+    <script>
+        // Simple entry animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-12');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-reveal, h1, p').forEach(el => {
+            if(!el.classList.contains('animate-reveal')) {
+                 el.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-12');
+            }
+            observer.observe(el);
+        });
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.05 });
+
+        document.querySelectorAll('.animate-reveal').forEach(el => revealObserver.observe(el));
+
+        // Interactive Cursor Glow
+        const cursorGlow = document.getElementById('cursor-glow');
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let currentX = mouseX;
+        let currentY = mouseY;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            if (cursorGlow.style.opacity === '0' || !cursorGlow.style.opacity) {
+                cursorGlow.style.opacity = '0.12';
+            }
+        });
+
+        document.addEventListener('mouseleave', () => {
+            cursorGlow.style.opacity = '0';
+        });
+
+        document.addEventListener('mouseenter', () => {
+            cursorGlow.style.opacity = '0.12';
+        });
+
+        function animateGlow() {
+            // Smooth easing for fluid motion
+            const lerpFactor = 0.08;
+            currentX += (mouseX - currentX) * lerpFactor;
+            currentY += (mouseY - currentY) * lerpFactor;
+
+            // Centering the 450px glow on the cursor
+            cursorGlow.style.transform = `translate(${currentX - 225}px, ${currentY - 225}px)`;
+            
+            requestAnimationFrame(animateGlow);
+        }
+
+        animateGlow();
+    </script>
+</body>
+</html>

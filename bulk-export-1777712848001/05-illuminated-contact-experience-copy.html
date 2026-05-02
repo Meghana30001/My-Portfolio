@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Meghana A</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&display=swap');
+        @import url('https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap');
+
+        :root {
+            --bg-dark: #080505;
+            --card-bg: rgba(25, 15, 15, 0.7);
+            --primary-orange: #FF6B35;
+            --amber: #FFA500;
+            --coral: #FF8C42;
+        }
+
+        body {
+            font-family: 'Satoshi', sans-serif;
+            background-color: var(--bg-dark);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .font-display {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .glass {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .bg-grid {
+            background-image: linear-gradient(rgba(255, 107, 53, 0.05) 1px, transparent 1px), 
+                              linear-gradient(90deg, rgba(255, 107, 53, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        @keyframes revealUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes rotate360 {
+            0% { transform: rotate(0deg) scale(1); }
+            100% { transform: rotate(360deg) scale(1.2); }
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes checkmark {
+            0% { transform: scale(0) rotate(-45deg); opacity: 0; }
+            70% { transform: scale(1.2) rotate(0deg); }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        .reveal {
+            opacity: 0;
+            animation: revealUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        .social-link-item:hover iconify-icon {
+            animation: rotate360 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        .form-input-focus:focus-within {
+            border-color: #FF6B35;
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.15);
+            transform: translateX(4px);
+        }
+
+        .btn-gradient-animate {
+            background-size: 200% 200%;
+            transition: all 0.4s ease;
+        }
+
+        .btn-gradient-animate:hover {
+            animation: gradientFlow 3s ease infinite;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+        }
+
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+        .delay-500 { animation-delay: 500ms; }
+        .delay-600 { animation-delay: 600ms; }
+        .delay-700 { animation-delay: 700ms; }
+        .delay-800 { animation-delay: 800ms; }
+
+        @keyframes floatOrb {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(40px, -40px) scale(1.05); }
+        }
+
+        .animate-float-orb {
+            animation: floatOrb 20s ease-in-out infinite;
+        }
+
+        .cursor-glow {
+            position: fixed;
+            width: 900px;
+            height: 900px;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.18) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(150px);
+            pointer-events: none;
+            z-index: 0;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+    </style>
+  <style>sd-component { display: block; }</style>
+  <script src="https://cdn.jsdelivr.net/npm/petite-vue@0.4.1/dist/petite-vue.iife.js" defer init></script>
+</head>
+<body>
+    <div class="min-h-screen relative flex flex-col items-center">
+        <!-- Interactive Cursor Glow -->
+        <div id="cursor-glow" class="cursor-glow"></div>
+        
+        <!-- Animated Background Elements -->
+        <div class="fixed inset-0 bg-grid pointer-events-none opacity-40"></div>
+        
+        <!-- Ambient Glowing Orbs -->
+        <div class="fixed top-[-20%] left-[-10%] w-[700px] h-[700px] bg-[#FF6B35]/20 blur-[120px] rounded-full pointer-events-none z-0 animate-float-orb" style="animation-duration: 25s;"></div>
+        <div class="fixed top-[-15%] right-[-15%] w-[800px] h-[800px] bg-[#FF8C42]/18 blur-[130px] rounded-full pointer-events-none z-0 animate-float-orb" style="animation-duration: 30s; animation-delay: -5s;"></div>
+        <div class="fixed bottom-[-20%] left-[-15%] w-[650px] h-[650px] bg-[#FFA500]/17 blur-[120px] rounded-full pointer-events-none z-0 animate-float-orb" style="animation-duration: 22s; animation-delay: -10s;"></div>
+        <div class="fixed bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-[#FF6B35]/15 blur-[100px] rounded-full pointer-events-none z-0 animate-float-orb" style="animation-duration: 28s; animation-delay: -15s;"></div>
+
+        <!-- Global Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 px-6 py-4 flex justify-center">
+  <div class="max-w-7xl w-full flex items-center justify-between px-8 py-3 rounded-full bg-[#190f0f]/70 backdrop-blur-xl border border-white/10">
+    <a href="01-ultra-illuminated-orange-ambient-portfolio.html" class="font-black text-2xl tracking-tighter text-white" style="font-family: 'Poppins', sans-serif;">
+      MEGHANA A<span class="text-[#FF6B35]">.</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium uppercase tracking-widest">
+      <a href="02-enhanced-ambient-background-glow-copy.html" class="text-white/70 hover:text-[#FF6B35] transition-colors">About</a>
+      <a href="03-ultra-illuminated-skills-arsenal.html" class="text-white/70 hover:text-[#FF6B35] transition-colors">Skills</a>
+      <a href="04-enhanced-ambient-background-lighting-copy.html" class="text-white/70 hover:text-[#FF6B35] transition-colors">Projects</a>
+      <a href="05-illuminated-contact-experience-copy.html" class="text-[#FF6B35] hover:text-[#FF6B35] transition-colors">Contact</a>
+    </div>
+    <a href="05-illuminated-contact-experience-copy.html" class="bg-white text-black px-6 py-2 rounded-full font-bold text-sm hover:bg-[#FF6B35] hover:text-white transition-all transform hover:scale-105">
+      Hire Me
+    </a>
+  </div>
+</nav>
+
+        <main class="w-full max-w-7xl px-6 pt-40 pb-20 relative z-10">
+            <!-- Hero Section -->
+            <div class="text-center space-y-6 mb-20 reveal">
+                <h1 class="font-display font-black text-6xl md:text-8xl tracking-tight uppercase">
+                    Let's Create <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B35] to-[#FF8C42] drop-shadow-[0_0_15px_rgba(255,107,53,0.3)]">Impact</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-white/60 max-w-2xl mx-auto leading-relaxed reveal delay-100">
+                    I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Reach out and let's build something together.
+                </p>
+            </div>
+
+            <!-- Contact Grid -->
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+                
+                <!-- Left Column: Contact Info -->
+                <div class="space-y-8 reveal delay-200">
+                    <div class="glass p-10 rounded-[3rem] border-white/10 space-y-12">
+                        <div>
+                            <h3 class="font-display font-bold text-3xl mb-4">Get In Touch</h3>
+                            <p class="text-white/60 text-lg">Feel free to reach out through any of these platforms or use the form. I typically respond within 24 hours.</p>
+                        </div>
+
+                        <div class="space-y-6">
+                            <a href="mailto:meghanaamilineni30@gmail.com" id="contact-email-main" class="flex items-center gap-6 group social-link-item reveal delay-300">
+                                <div class="w-16 h-16 glass rounded-full flex items-center justify-center group-hover:bg-[#FF6B35] group-hover:text-black transition-all duration-300 shadow-lg group-hover:shadow-[#FF6B35]/30">
+                                    <iconify-icon icon="lucide:mail" class="text-2xl"></iconify-icon>
+                                </div>
+                                <div>
+                                    <p class="text-sm uppercase tracking-widest text-white/40 font-bold mb-1">Email Me</p>
+                                    <span class="text-xl font-medium group-hover:text-[#FF6B35] transition-colors">meghanaamilineni30@gmail.com</span>
+                                </div>
+                            </a>
+
+                            <a href="https://www.linkedin.com/in/meghana-a-799ab332a/" id="contact-linkedin-main" class="flex items-center gap-6 group social-link-item reveal delay-400">
+                                <div class="w-16 h-16 glass rounded-full flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-lg group-hover:shadow-blue-600/30">
+                                    <iconify-icon icon="lucide:linkedin" class="text-2xl"></iconify-icon>
+                                </div>
+                                <div>
+                                    <p class="text-sm uppercase tracking-widest text-white/40 font-bold mb-1">Professional Network</p>
+                                    <span class="text-xl font-medium group-hover:text-blue-500 transition-colors">https://www.linkedin.com/in/meghana-a-799ab332a/</span>
+                                </div>
+                            </a>
+
+                            <a href="https://github.com/Meghana30001" id="contact-github-main" class="flex items-center gap-6 group social-link-item reveal delay-500">
+                                <div class="w-16 h-16 glass rounded-full flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-300 shadow-lg group-hover:shadow-white/30">
+                                    <iconify-icon icon="lucide:github" class="text-2xl"></iconify-icon>
+                                </div>
+                                <div>
+                                    <p class="text-sm uppercase tracking-widest text-white/40 font-bold mb-1">Source Code</p>
+                                    <span class="text-xl font-medium group-hover:text-white transition-colors">https://github.com/Meghana30001</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Quick Stats or Quote Area -->
+                    <div class="glass p-8 rounded-[2.5rem] border-[#FF6B35]/20 flex items-center gap-6 reveal delay-600">
+                        <div class="w-12 h-12 bg-[#FF6B35]/20 rounded-2xl flex items-center justify-center">
+                             <iconify-icon icon="lucide:map-pin" class="text-2xl text-[#FF6B35]"></iconify-icon>
+                        </div>
+                        <div>
+                            <p class="text-white/40 text-sm font-bold uppercase tracking-wider">Based In</p>
+                            <p class="text-xl font-bold">Bengaluru, Karnataka</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Contact Form -->
+                <div class="reveal delay-200">
+                    <div id="contact-form" class="glass p-12 rounded-[3.5rem] border-white/10 scroll-mt-36">
+                        <h3 class="font-display font-bold text-3xl mb-8">Send a Message</h3>
+                        <form class="space-y-6">
+                            <div class="space-y-2 reveal delay-300 form-input-focus transition-all duration-300">
+                                <label class="text-sm font-bold uppercase tracking-widest text-white/40 ml-1">Your Name</label>
+                                <input type="text" placeholder="John Doe" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 focus:outline-none focus:border-[#FF6B35]/50 focus:ring-1 focus:ring-[#FF6B35]/20 transition-all text-white placeholder:text-white/20">
+                            </div>
+                            
+                            <div class="space-y-2 reveal delay-300 form-input-focus transition-all duration-300">
+                                <label class="text-sm font-bold uppercase tracking-widest text-white/40 ml-1">Email Address</label>
+                                <input type="email" placeholder="john@example.com" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 focus:outline-none focus:border-[#FF6B35]/50 focus:ring-1 focus:ring-[#FF6B35]/20 transition-all text-white placeholder:text-white/20">
+                            </div>
+
+                            <div class="space-y-2 reveal delay-300 form-input-focus transition-all duration-300">
+                                <label class="text-sm font-bold uppercase tracking-widest text-white/40 ml-1">Message</label>
+                                <textarea rows="6" placeholder="Tell me about your project..." class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 focus:outline-none focus:border-[#FF6B35]/50 focus:ring-1 focus:ring-[#FF6B35]/20 transition-all text-white placeholder:text-white/20 resize-none"></textarea>
+                            </div>
+
+                            <button id="form-submit-page" class="w-full bg-gradient-to-r from-[#FF6B35] via-[#FFA500] to-[#FF8C42] text-black font-black uppercase tracking-widest py-6 rounded-2xl transition-all transform hover:scale-[1.05] active:scale-[0.98] btn-gradient-animate reveal delay-700 flex items-center justify-center gap-3">
+                                <span>Transmit Message</span>
+                                <iconify-icon icon="lucide:send"></iconify-icon>
+                            </button>
+                        </form>
+                        <!-- Success Message Simulation (Hidden by default) -->
+                        <div id="success-message" class="hidden absolute inset-0 bg-black/90 backdrop-blur-xl flex flex-col items-center justify-center text-center p-12 rounded-[3.5rem] z-20">
+                            <div class="w-24 h-24 bg-[#FF6B35] rounded-full flex items-center justify-center mb-6">
+                                <iconify-icon icon="lucide:check" class="text-5xl text-black" style="animation: checkmark 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;"></iconify-icon>
+                            </div>
+                            <h4 class="font-display font-black text-4xl mb-2 uppercase">Sent Successfully</h4>
+                            <p class="text-white/60">Your message has traversed the digital void. I'll get back to you shortly.</p>
+                            <button onclick="this.parentElement.classList.add('hidden')" class="mt-8 text-[#FF6B35] font-bold border-b border-[#FF6B35]/40 hover:border-[#FF6B35] transition-all">Send another message</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer Section -->
+<footer class="w-full max-w-7xl px-6 py-32 space-y-12 border-t border-white/10">
+    <div class="grid lg:grid-cols-2 gap-20">
+        <div class="space-y-8">
+            <div class="space-y-4">
+                <h2 class="font-display font-black text-6xl tracking-tight">Let's create <span class="text-[#FF6B35]">impact</span>.</h2>
+                <p class="text-xl text-white/60">
+                    I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+                </p>
+            </div>
+            
+            <div class="space-y-6">
+                <a href="mailto:meghanaamilineni30@gmail.com" id="contact-email-footer" class="flex items-center gap-4 group">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center group-hover:bg-[#FF6B35] group-hover:text-black transition-all" style="background: rgba(25, 15, 15, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <iconify-icon icon="lucide:mail"></iconify-icon>
+                    </div>
+                    <span class="text-lg font-medium">meghanaamilineni30@gmail.com</span>
+                </a>
+                <a href="https://www.linkedin.com/in/meghana-a-799ab332a/" id="contact-linkedin-footer" class="flex items-center gap-4 group">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all" style="background: rgba(25, 15, 15, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <iconify-icon icon="lucide:linkedin"></iconify-icon>
+                    </div>
+                    <span class="text-lg font-medium">linkedin.com/in/meghana-a-799ab332a</span>
+                </a>
+                <a href="https://github.com/Meghana30001" id="contact-github-footer" class="flex items-center gap-4 group">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all" style="background: rgba(25, 15, 15, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <iconify-icon icon="lucide:github"></iconify-icon>
+                    </div>
+                    <span class="text-lg font-medium">github.com/Meghana30001</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="p-10 rounded-[3rem] space-y-6 flex flex-col justify-center" style="background: rgba(25, 15, 15, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1);">
+            <h3 class="font-display font-bold text-2xl">Prefer the form?</h3>
+            <p class="text-white/60">Jump back to the full contact form above any time.</p>
+            <a href="#contact-form" class="inline-flex justify-center bg-[#FF6B35] text-black font-bold py-4 rounded-2xl hover:bg-[#FF8C42] transition-all shadow-lg shadow-[#FF6B35]/20">Go to form</a>
+        </div>
+    </div>
+
+    <div class="pt-20 flex flex-col md:flex-row justify-between items-center gap-6 text-white/40 text-sm">
+        <p>© 2024 Meghana A. Engineering Student Portfolio.</p>
+        <p>Designed for Recruiters with ❤️ and Code.</p>
+    </div>
+</footer>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const glow = document.getElementById('cursor-glow');
+            let mouseX = 0, mouseY = 0;
+            let currentX = 0, currentY = 0;
+            
+            // Track mouse position
+            window.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                if (glow.style.opacity === '0' || !glow.style.opacity) {
+                    glow.style.opacity = '1';
+                }
+            });
+
+            // Smooth tracking animation
+            const updateGlow = () => {
+                // Linear interpolation for smooth lag effect
+                currentX += (mouseX - currentX) * 0.08;
+                currentY += (mouseY - currentY) * 0.08;
+
+                glow.style.left = currentX + 'px';
+                glow.style.top = currentY + 'px';
+                
+                requestAnimationFrame(updateGlow);
+            };
+
+            // Handle mouse leaving window
+            window.addEventListener('mouseout', () => {
+                glow.style.opacity = '0';
+            });
+
+            updateGlow();
+        });
+    </script>
+</body>
+</html>

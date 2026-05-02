@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Form Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #333; color: white; }
+        input, textarea { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #666; background: #555; color: white; }
+        button { padding: 10px 20px; background: #FF6B35; color: white; border: none; cursor: pointer; }
+        .error { color: red; }
+        .success { color: green; }
+        #debug { background: #444; padding: 10px; margin: 10px 0; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Contact Form Test</h1>
+    <div id="debug">Debug info will appear here...</div>
+    
+    <form id="testForm">
+        <input type="text" name="name" placeholder="Your Name" required><br>
+        <input type="email" name="email" placeholder="Your Email" required><br>
+        <textarea name="message" placeholder="Your Message" required></textarea><br>
+        <button type="submit">Send Message</button>
+    </form>
+    
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('testForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const debugDiv = document.getElementById('debug');
+            const resultDiv = document.getElementById('result');
+            
+            debugDiv.innerHTML = 'Submitting form...';
+            resultDiv.innerHTML = '';
+            
+            const formData = new FormData(e.target);
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                message: formData.get('message')
+            };
+            
+            debugDiv.innerHTML += '<br>Data: ' + JSON.stringify(data);
+            
+            try {
+                debugDiv.innerHTML += '<br>Sending request to /api/contact...';
+                
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                debugDiv.innerHTML += '<br>Response status: ' + response.status;
+                debugDiv.innerHTML += '<br>Response headers: ' + JSON.stringify(Object.fromEntries(response.headers));
+                
+                const result = await response.json();
+                
+                debugDiv.innerHTML += '<br>Response body: ' + JSON.stringify(result);
+                
+                if (result.success) {
+                    resultDiv.innerHTML = '<div class="success">SUCCESS: ' + result.message + '</div>';
+                    e.target.reset();
+                } else {
+                    resultDiv.innerHTML = '<div class="error">ERROR: ' + result.message + '</div>';
+                }
+                
+            } catch (error) {
+                debugDiv.innerHTML += '<br><div class="error">NETWORK ERROR: ' + error.message + '</div>';
+                resultDiv.innerHTML = '<div class="error">Network error occurred. Check console for details.</div>';
+                console.error('Full error:', error);
+            }
+        });
+    </script>
+</body>
+</html>
